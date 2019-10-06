@@ -1,0 +1,31 @@
+---
+version: 4.0.0
+name: General Data Science
+description: General Data Science
+repository: https://github.com/YTKme/GDS
+timezone: America/Los_Angeles
+
+collections:
+  docs:
+    permalink: /:collection/:path/
+    output: true
+
+defaults:
+  - scope:
+      path: _docs
+      type: docs
+    values:
+      layout: docs
+
+plugins:
+  - jekyll-feed
+  - jekyll-redirect-from
+  - jekyll-seo-tag
+
+sass:
+  style: compressed
+
+strict_front_matter: true
+
+exclude:
+  - .gitignore
