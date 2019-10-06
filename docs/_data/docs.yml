@@ -1,0 +1,6 @@
+- title: General
+  subcategories:
+    - title: Landscape
+      docs:
+        - title: Overview
+          link: general/landscape/overview
