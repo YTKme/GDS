@@ -1,6 +1,6 @@
 - title: General
   subcategories:
-    - title: Landscape
+    - title: Data Science
       docs:
         - title: Overview
-          link: general/landscape/overview
+          link: general/datascience/overview
