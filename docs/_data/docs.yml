@@ -3,4 +3,11 @@
     - title: Data Science
       docs:
         - title: Overview
-          link: general/datascience/overview
+          link: general/data-science/overview
+
+- title: Machine Learning
+  subcategories:
+    - title: Coursera
+      docs:
+        - title: Machine Learning Foundations A Case Study Approach
+          link: ml/coursera/machine-learning-foundations-a-case-study-approach
