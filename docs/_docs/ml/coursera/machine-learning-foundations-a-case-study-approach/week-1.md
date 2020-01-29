@@ -1,17 +1,15 @@
 ---
-title: Machine Learning Foundations A Case Study Approach
-permalink: /docs/ml/coursera/machine-learning-foundations-a-case-study-approach/
+title: Machine Learning Foundations A Case Study Approach <small class="text-muted d-block">Week 1</small>
+permalink: /docs/ml/coursera/machine-learning-foundations-a-case-study-approach/week-1/
 ---
 
-## Week 1
-
-### Welcome
+## Welcome
 
 <p class="lead">Machine Learning Specialization</p>
 <p class="lead">University of Washington</p>
 <blockquote class="blockquote">Machine learning is changing the world</blockquote>
 
-### Old View of Machine Learning
+## Old View of Machine Learning
 
 1. Data
     * Start with some data set or data.
@@ -22,9 +20,9 @@ permalink: /docs/ml/coursera/machine-learning-foundations-a-case-study-approach/
 4. Write A Paper
     * Write the paper to machine learning conference.
 
-![Figure 1: Old View of Machine Learning]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/old_view_of_machine_learning.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
+![Figure 1: Old View of Machine Learning]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-1/old_view_of_machine_learning.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
 
-### Industry
+## Industry
 
 Disruptive companies differentiated by INTELLIGENT APPLICATIONS using MACHINE LEARNING.
 
@@ -44,22 +42,22 @@ Disruptive companies differentiated by INTELLIGENT APPLICATIONS using MACHINE LE
 * LinkedIn Networking
 * LivingSocial Coupons
 
-### The Machine Learning Pipeline
+## The Machine Learning Pipeline
 
 1. Data
     * Start from data.
-2. Machine Learning Method
+2. Machine Learning Method  
     * Bring in a machine learning method that provide a new kind of analysis of the data.
 3. Intelligence
     * The analysis will give intelligence such as product likely to buy right now.
 
 Taking this pipeline and working through it in a wide range of settings and a wide range of applications, with a wide range of algorithms. With the understanding how they connect together, be able to really build smart, intelligent applications.
 
-![Figure 2: The Machine Learing Pipeline]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/the_machine_learning_pipeline.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
+![Figure 2: The Machine Learing Pipeline]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-1/the_machine_learning_pipeline.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
 
-### Machine Learning Case Studies
+## Machine Learning Case Studies
 
-#### Case Study 1: Predicting House Prices
+### Case Study 1: Predicting House Prices
 
 The intelligence derived is a value associated with some house that's not on the market. The value is unknown and learned from the data.
 
@@ -70,7 +68,7 @@ The intelligence derived is a value associated with some house that's not on the
     * The machine learning method is going to relate the house attributes (features) to the sales price.
     * If the model is learned, it can take the house attribute(s) and predict the unknown sales price. (**regression method**)
 
-#### Case Study 2: Sentiment Analysis
+### Case Study 2: Sentiment Analysis
 
 Explore a sentiment analysis task for reviews of restaurants. By taking the reviews and be able to classify whether it had positive sentiment (thumbs up) or negative sentiment (thumbs down).
 
@@ -83,7 +81,7 @@ Explore a sentiment analysis task for reviews of restaurants. By taking the revi
     * From the reviews, learn some decision boundary based on the balance of positive and negative word usage, whether it's a positive or negative reivew.
     * Learn from other reviews based on the rating associated with the text. (**classification method**)
 
-#### Case Study 3: Document Retrieval
+### Case Study 3: Document Retrieval
 
 Document retrieval task where the intelligence derived is an article or a book or something of interest to the reader.
 
@@ -96,7 +94,7 @@ Document retrieval task where the intelligence derived is an article or a book o
     * Don't have corpus ahead of time, trying to infer from the data.
     * Use for very rapid document retrieval to retrieve similar articles. (**clustering**)
 
-#### Case Study 4: Product Recommendation
+### Case Study 4: Product Recommendation
 
 Collaborative filtering of product recommendation, where take past purchases and try to recommend some set of other product might be of interest in purchasing. Derive intelligence for production recommendation in relationship to products bought and products likely to buy in the future.
 
@@ -112,7 +110,7 @@ Collaborative filtering of product recommendation, where take past purchases and
         * Whether the product is actually about those attributes.
     * Going from customers by products matrix into learned features about users and products. (**matrix factorization**)
 
-#### Case Study 5: Visual Product Recommender
+### Case Study 5: Visual Product Recommender
 
 A visual product recommender based on user input of images, which resulting in other products / images of interest.
 
@@ -125,15 +123,25 @@ A visual product recommender based on user input of images, which resulting in o
     * Look at neural networks where every layer provide more and more descriptive features.
     * Deeper and deeper layers to get more intricate features. (**deep learning**)
 
-### A Unique Machine Learning Specialization
+## A Unique Machine Learning Specialization
 
 From use cases to models and algorithms.
+* See machine learning through the lens of a wide range of case studies in different areas that really ground the concepts behind them.
+* Other machine learning approach can be a laundry list of algorithm and methods.
+* The problem is starting with algorithms, and end up having really simplistic use cases with applications, that are disconnected from reality.
+* Start with use cases, grasp the key concepts and the techniques, then build and measure the quality to understand whether the intelligent applications are working well or not.
 
-#### Introduction
+### Introduction
 
 First course is about building, evaluating, and deploying *intelligence* in each case study...
 
-![Figure 3: The Machine Learing Pipeline Version 2]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/the_machine_learning_pipeline_v2.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
+Figure out what task to solve, what machine learning methods make sense, and how to measure them. (using algorithms as black boxes, for now)
+* Which machine learning model(s) to use.
+* What methods is used to optimize the parameters of the model(s)?
+* Is it providing the intelligence needed?
+* How to measure the quality of the system?
+
+![Figure 3: The Machine Learing Pipeline Version 2]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-1/the_machine_learning_pipeline_v2.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
 
 Subsequent courses provide depth in models & algorithms, but still use case studies.
 1. Introduction
@@ -143,4 +151,90 @@ Subsequent courses provide depth in models & algorithms, but still use case stud
 5. Matrix Factorization & Dimensionality Reduction
 6. Capstone: Build an Intelligent Application with Deep Learning
 
-#### Regression
+### Regression
+
+Case Study: Predict House Prices (from features of the house)
+
+* Models
+    * Linear Regression
+    * Regularization
+        * Ridge (L2)
+        * Lasso (L1)
+* Algorithms (Optimization)
+    * Gradient Descent
+    * Coordinate Descent
+* Concepts
+    * Loss Functions
+    * Bias-Variance
+    * Tradeoff
+    * Cross-Validation
+    * Sparsity
+    * Overfitting
+    * Model Selection
+
+### Classification
+
+Case Study: Analyzing Sentiment
+
+* Models
+    * Linear Classifiers (Logistic Regression, <abbr title="Support Vector Machines">SVMs</abbr> (Support Vector Machines), Perceptron)
+    * Kernels
+    * Decision Trees
+    * (Kernels and Decision Tress to deal with non-linear complex features)
+* Algorithms
+    * Stochastic Gradient Descent
+    * Boosting
+* Concepts
+    * Decision Boundaries
+    * <abbr title="Maximum Likelihood Estimation">MLE</abbr> (Maximum Likelihood Estimation)
+    * Ensemble Methods
+    * Random Forests
+    * <abbr title="Classification And Regression Tree">CART</abbr> (Classification And Regression Tree)
+    * Online Learning
+
+### Clustering & Retrieval
+
+Case Study: Finding Documents
+
+* Models
+    * Nearest Neighbors
+    * Clustering, Mixtures of Gaussians
+    * Latent Dirichlet Allocation (<abbr title="Latent Dirichlet Allocation">LDA</abbr>) (advance text analysis clustering technique)
+* Algorithms
+    * <abbr title="K-Dimensional">KD</abbr>-Trees (K-Dimensional Tree), Locality-Sensitive Hashing (<abbr title="Locality-Sensitive Hashing">LSH</abbr>)
+    * K-Means
+    * Expectation-Maximization (<abbr title="Expectation-Maximization">EM</abbr>)
+* Concepts
+    * Distance Metrics
+    * Approximation Algorithms
+    * Hashing
+    * Sampling Algorithms
+    * Scaling Up With Map-Reduce
+    * (how to scale things up and write them as distributed algorithms)
+
+### Matrix Factorization & Dimensionality Reduction
+
+Case Study: Recommending Products
+
+* Models
+    * Collaborative Filtering
+    * Matrix Factorization
+    * (dimensionality reduction)
+    * <abbr title="Principal Component Analysis">PCA</abbr> (Principal Component Analysis)
+* Algorithms
+    * Coordinate Descent
+    * Eigen Decomposition
+    * <abbr title="Singular Value Decomposition">SVD</abbr> (Singular Value Decomposition)
+* Concepts
+    * Matrix Completion
+    * Eigenvalues
+    * Random Projects
+    * Cold-Start Problem
+    * Diversity
+    * Scaling Up
+
+### Capstone
+
+An intelligent application using deep learning
+
+Build & deploy a recommender using product images and text sentiment.

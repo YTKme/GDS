@@ -5,9 +5,13 @@
         - title: Overview
           link: general/data-science/overview
 
-- title: Machine Learning
+- title: Coursera
   subcategories:
-    - title: Coursera
+    - title: Machine Learning Foundations A Case Study Approach
       docs:
-        - title: Machine Learning Foundations A Case Study Approach
-          link: ml/coursera/machine-learning-foundations-a-case-study-approach
+        - title: Week 1
+          link: ml/coursera/machine-learning-foundations-a-case-study-approach/week-1
+    - title: Machine Learning Regression
+      docs:
+        - title: Week 1
+          link: ml/coursera/machine-learning-regression/week-1
