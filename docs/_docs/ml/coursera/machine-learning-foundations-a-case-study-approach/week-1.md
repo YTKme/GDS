@@ -238,3 +238,65 @@ Case Study: Recommending Products
 An intelligent application using deep learning
 
 Build & deploy a recommender using product images and text sentiment.
+
+## Level of the Specialization
+
+<blockquote class="blockquote">
+    <b>Motto:</b><br />
+    though concepts made intuitive and applicable
+</blockquote>
+
+It is not going to be about theorem proving, but understanding at a very intuitive and practical level some very important machine learning algorithms. Thinking about ways in which to deploy them in new problems.
+
+* minimize prerequisite knowledge
+* maximize ability to develop and deploy
+* learn concepts through case studies
+
+## Target Audience
+* Software Engineer
+    * Interested in machine learning
+* Scientist
+    * Become data scientist
+* Data Enthusiast
+    * Some math, some programming experience
+    * Be able to analyze data and do fun things with it
+    * Learn more about machine learning and how to derive intelligence from data
+
+## Math Background
+* Basic Calculus
+    * Concept of Derivatives
+* Basic Linear Algebra
+    * Vectors
+    * Matrices
+    * Matrix Multiply
+
+## Programming Experience
+* Basic Python Used
+    * Can Pick Up Along The Way
+    * Knowledge of Other Language
+
+## Computing Need
+* Basic Desktop or Laptop
+* Access To Internet
+* Ability To:
+    * Install and run Python
+    * Store a few <abbr title="Gigabyte">GB</abbr> of data
+
+## You'll Be Able To Do Amazing Things!
+
+## Journey
+
+![Figure 4: Journey]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-1/journey.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
+
+* Course 1: Build Intelligent Applications
+* Course 2-5: Formulate, Implement & Evaluate Machine Learning Methods
+* Course 6: Design & Deploy Exciting Application
+
+## The Capstone Project
+Build and deploy an intelligent application with deep learning.
+
+An intelligent recommender using images & text
+
+## We Will Do Something Even More Exciting!
+
+![Figure 5: Capstone Project]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-1/capstone_project.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
