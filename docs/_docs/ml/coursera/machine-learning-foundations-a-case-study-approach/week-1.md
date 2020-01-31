@@ -300,3 +300,15 @@ An intelligent recommender using images & text
 ## We Will Do Something Even More Exciting!
 
 ![Figure 5: Capstone Project]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-1/capstone_project.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
+
+* Recommenders
+    * Recommender system
+* Text Sentiment Analysis
+    * What people are saying in the review about different products and extract those reviews to analyze them
+* Computer Vision
+    * Visually understand images
+* Deep Learning
+    * Take computer vision techniques and make them extremely accurate
+* Deploy Intelligent Web Application
+    * Intelligent web service for products to interact with
+    * Show intelligence behind the service
