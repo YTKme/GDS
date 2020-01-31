@@ -312,3 +312,8 @@ An intelligent recommender using images & text
 * Deploy Intelligent Web Application
     * Intelligent web service for products to interact with
     * Show intelligence behind the service
+
+## Appendix
+
+## Reference
+* [Introduction]({{ "/res/misc/ml/coursera/machine-learning-foundations-a-case-study-approach/week-1/intro.pdf" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:target="_blank"}
