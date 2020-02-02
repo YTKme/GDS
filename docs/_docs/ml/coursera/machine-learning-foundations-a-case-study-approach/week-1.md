@@ -317,3 +317,4 @@ An intelligent recommender using images & text
 
 ## Reference
 * [Introduction]({{ "/res/misc/ml/coursera/machine-learning-foundations-a-case-study-approach/week-1/intro.pdf" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:target="_blank"}
+* [GitHub Repository Starter Code](https://github.com/learnml/machine-learning-specialization){:target="_blank"}
