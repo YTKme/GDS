@@ -313,6 +313,27 @@ An intelligent recommender using images & text
     * Intelligent web service for products to interact with
     * Show intelligence behind the service
 
+## Getting Started With Python
+
+There are two really exciting tools for programming machine learning algorithms, and also useful in data science.
+* [Python](https://www.python.org/){:target="_blank"} Programming Language
+* [iPython Notebook](https://jupyter.readthedocs.io/en/latest/install.html){:target="_blank"} ([Project Jupyter](https://jupyter.org/){:target="_blank"})
+
+
+**Notebook:** [Getting Started With iPython Notebook](https://github.com/YTKme/GDS/blob/development/ml/coursera/machine-learning-foundations-a-case-study-approach/week-1/work/Getting-Started-With-iPython-Notebook.ipynb){:target="_blank"}
+
+## Getting Started With SFrame (DateFrame) For Data Engineering and Analysis
+
+The specialization will use a number of Python tools to help get started with machine learning. But there are many more.
+* [pandas](https://pandas.pydata.org/){:target="_blank"}
+* [scikit-learn](https://scikit-learn.org/){:target="_blank"}
+    * [NumPy](https://numpy.org/){:target="_blank"}
+    * [SciPy](https://www.scipy.org/){:target="_blank"}
+* [matplotlib](https://matplotlib.org/){:target="_blank"}
+* [TensorFlow](https://www.tensorflow.org/){:target="_blank"}
+
+**Notebook:** [Getting Started With SFrames](https://github.com/YTKme/GDS/blob/development/ml/coursera/machine-learning-foundations-a-case-study-approach/week-1/work/Getting-Started-With-SFrames.ipynb){:target="_blank"}
+
 ## Appendix
 
 ## Reference
