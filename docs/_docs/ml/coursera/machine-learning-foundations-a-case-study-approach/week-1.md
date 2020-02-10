@@ -20,7 +20,7 @@ permalink: /docs/ml/coursera/machine-learning-foundations-a-case-study-approach/
 4. Write A Paper
     * Write the paper to machine learning conference.
 
-![Figure 1: Old View of Machine Learning]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-1/old_view_of_machine_learning.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
+![Figure 1: Old View of Machine Learning]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-1/old-view-of-machine-learning.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
 
 ## Industry
 
@@ -53,7 +53,7 @@ Disruptive companies differentiated by INTELLIGENT APPLICATIONS using MACHINE LE
 
 Taking this pipeline and working through it in a wide range of settings and a wide range of applications, with a wide range of algorithms. With the understanding how they connect together, be able to really build smart, intelligent applications.
 
-![Figure 2: The Machine Learing Pipeline]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-1/the_machine_learning_pipeline.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
+![Figure 2: The Machine Learing Pipeline]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-1/the-machine-learning-pipeline.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
 
 ## Machine Learning Case Studies
 
@@ -141,7 +141,7 @@ Figure out what task to solve, what machine learning methods make sense, and how
 * Is it providing the intelligence needed?
 * How to measure the quality of the system?
 
-![Figure 3: The Machine Learing Pipeline Version 2]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-1/the_machine_learning_pipeline_v2.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
+![Figure 3: The Machine Learing Pipeline Version 2]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-1/the-machine-learning-pipeline-v2.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
 
 Subsequent courses provide depth in models & algorithms, but still use case studies.
 1. Introduction
@@ -299,7 +299,7 @@ An intelligent recommender using images & text
 
 ## We Will Do Something Even More Exciting!
 
-![Figure 5: Capstone Project]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-1/capstone_project.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
+![Figure 5: Capstone Project]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-1/capstone-project.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
 
 * Recommenders
     * Recommender system
@@ -337,5 +337,5 @@ The specialization will use a number of Python tools to help get started with ma
 ## Appendix
 
 ## Reference
-* [Introduction]({{ "/res/misc/ml/coursera/machine-learning-foundations-a-case-study-approach/week-1/intro.pdf" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:target="_blank"}
+* [Introduction [PDF]]({{ "/res/misc/ml/coursera/machine-learning-foundations-a-case-study-approach/week-1/intro.pdf" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:target="_blank"}
 * [GitHub Repository Starter Code](https://github.com/learnml/machine-learning-specialization){:target="_blank"}
