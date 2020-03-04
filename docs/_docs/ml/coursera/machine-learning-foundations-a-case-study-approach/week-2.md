@@ -378,11 +378,92 @@ Another very different application is maybe a smart house.
 * What's the temperature at the desk (no sensor)
     * Learn (fitting) spatial function to predict temperature
 * Also depends on
-    * thermostat setting
+    * Thermostat setting
     * Blinds (open/close) or window tint
     * Vents
     * Temperature outside
     * Time of day
+
+## Summary For Regression
+
+This module showed how regression can be used to predict house prices and also be useful in a wide range of other applications.
+
+### The Machine Learning Pipeline
+
+Introduced machine learning pipeline
+* Go from data
+* Shoved into some machine learning method
+* Use that to derive intelligence
+
+![Figure 16: The Machine Learing Pipeline]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-1/the-machine-learning-pipeline.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
+
+Dig into the block diagram and expand it, to see some of these machine learning tools in a little bit more detail.
+* What is used to fit the data is some **Training Data Set** (data)
+    * In the housing application for predicting the price of some house, the data collected was:
+        * House ID
+        * Some set of house attributes
+        * House sales price
+    * Had this for a whole bunch of houses in the neighborhood
+    * Collected this data into some table
+    * Represented the training data set
+* Took that data, and shoved it through some **Feature Extractor**
+    * In this case is a very simple feature extractor
+    * Choose some subset of the house attributes
+    * Variable <math>X</math> is the set of features, represented:
+        * Square feet
+        * Number of bathrooms
+        * Possibly using more features
+* The goal was to take these features and have some type of **Model** that led to a prediction of the house price
+    * The output, the intelligence being derived, is the predicted house price
+    * Do this for every house in the training data set
+        * Take its associated features
+        * Shove it through this machine learning model (regression)
+        * Predict the house price
+* Remember that this machine learning model had some set of parameters
+    * The parameters are called **<math>&wcirc;</math> (<math>w (hat)</math>)**
+    * These are the weights of the features
+    * Weight on square feet or number of bathrooms, and so on...
+    * More technically, these are called regression coefficients
+    * Talked about estimating these parameters from data
+    * Variable <math>&wcirc;</math> is the estimate of these parameters
+* Took the predicted output, so the predicted house price, and compared it to the true house price (the actual sales price recorded in the training data table)
+    * **Variable <math>y</math>** is the actual sales price for the houses in the training data
+    * Compare to the predicted house price
+* Use **Quality Metric** to measure how well is the prediction
+    * Using the model, using <math>&wcirc;</math> as the parameters of that model
+* The error metric talked about was something called residual sum of squares
+    * Sum up the square difference between the actual house sales price and the predicted house sales price
+    * Summing over all houses in the training data set
+* The **Quality Metric** is going to take the predicted and actual house sales observations
+    * Spit out this error
+    * Go into a machine learning algorithm that's going to be used to update the weights (parameters of the model)
+* The **Loop** where it is taking the predictions
+    * Computing the error relative to the actual house sales price
+    * Updating the weights of the model parameters
+    * This process tends to happen in an iterative way, where the values are updated again and again
+
+Abstract way
+* Some training data set
+* Some feature extraction process
+* Some machine learning model
+* Produce some intelligence (in this case is a prediction)
+* Assess the quality of the intelligence with some quality measure
+* Use that error or accuracy (depending which way to think about measuring it)
+* Adjust the model parameters using some algorithm
+* (Will see this type of flow for machine learning again and again)
+
+![Figure 17: Detail Machine Learning Pipeline]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-2/detail-machine-learning-pipeline.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
+
+### What Can Be Done Now...
+* Describe the input (features) and output (real-valued predictions) of a regression model
+* Calculate a goodness-of-fit metric (e.g., <abbr title="Residual Sum of Squares">RSS</abbr>)
+* Estimate model parameters by minimizing RSS (algorithms to come...)
+* Exploit the estimated model to form predictions
+* Perform a train(ing)/test(ing) split of the data
+* Analyze performance of various regression models in terms of test error
+* Use test error to avoid overfitting when selecting amongst candidate models
+* Describe a regression model using multiple features
+* Describe other applications where regression is useful
 
 ## Appendix
 
