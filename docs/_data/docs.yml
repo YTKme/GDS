@@ -13,6 +13,8 @@
           link: ml/coursera/machine-learning-foundations-a-case-study-approach/week-1
         - title: Week 2
           link: ml/coursera/machine-learning-foundations-a-case-study-approach/week-2
+        - title: Week 3
+          link: ml/coursera/machine-learning-foundations-a-case-study-approach/week-3
     - title: Machine Learning Regression
       docs:
         - title: Week 1
