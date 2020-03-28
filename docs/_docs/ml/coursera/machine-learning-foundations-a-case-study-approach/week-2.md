@@ -299,7 +299,7 @@ But digging into the data set a little bit more, looking at a similar house.
 ### Add More Feature
 
 Think about adding more features.
-* Instead of just looking atthe relationship between square feet and price, can add number of bathroom.
+* Instead of just looking at the relationship between square feet and price, can add number of bathroom.
     * For each one of the listings, need to go through and record how many square feet that house had, and the number of bathrooms
     * Plot each of these points in the 3D space
     * It is a hyper cube of square feet, versus bathrooms, versus price
