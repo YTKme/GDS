@@ -334,7 +334,7 @@ Understand a little better how to score the sentences and what does that imply a
 * While points on the top left all have score less than zero (for example the point three (3) awfuls, one (1) awesome) are label negative
 
 In fact, what separates the negative predictions from the positive predictions is the line that defines the places unknown for positive and negative.
-That's the line where <b><math>1.0 #awesome - 1.5 #awful = 0</math></b>.
+That's the line where **<math>1.0 #awesome - 1.5 #awful = 0</math>**.
 That's the line when the prediction is uncertain, and it is called the decision boundary.
 Everything on one side predicted as positive, everything on the other is predicted as negative.
 
@@ -353,6 +353,402 @@ Notice that the decision boundary is a line. That's why it's called a linear cla
         * hyperplane (really high dimensional separators)
 * For more general classifiers
     * more complicated shapes (squiggly separations)
+
+## Training + Evaluating Classifier
+
+Here in classification, the errors are a little different because it is talking about which inputs are correct and which inputs are wrong.
+
+### Training Classifier = Learning Weights
+
+Talk a little bit about measuring error in classification.
+
+Learn a classifier:
+* Given a set of input data
+    * These are sentences that have been marked to say positive or negative sentiment
+* Split it into a training set and a testing set
+* Feed the training set to the classifier to learn
+    * The algorithm is actually going to learn the weights for words
+* These weights are going to be used to score every element in the testing set
+    * Evaluate how good in terms of classification
+
+What does that evaluation looks like?
+
+![Figure 14: Training Classifier Learning Weight]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-3/training-classifier-learning-weight.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
+
+### Classification Error
+
+How to measure (classification) error?
+
+Given a set of test examples in the form, **Sushi was great**, is a *positive* sentence.
+Trying to figure out how many of these test get correct and how many get mistake.
+
+Take the sentence, **Sushi was great**, and feed it through the learned classifier.
+But don't want the learned classifier to actually see the true label.
+Want to see if it gets the true label right, so going to hide that true label.
+The sentence gets fed to the learned classifier while the true label is hidden.
+
+Now given the sentence, going to predict **<math>&ycirc;</math>** as being positive.
+Leaving this as a positive sentence, made a correct prediction.
+The number of correct sentences goes up by one (1).
+
+![Figure 15: Classification Error]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-3/classification-error.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
+
+Now take another sentence, another test example, **Food was OK**, as a *negative* sentence.
+So that's a bit of an ambiguous sentence, but it's been labeled as negative in the training set.
+
+So now feed the sentence to the classifier, hide the label.
+In this case, because the **Food was OK** can be revealed as positive.
+Maybe it makes a prediction that this is a positive sentence, then it is a mistake, because the true label is negative.
+
+Do this for every sentence in the [corpus](https://en.wikipedia.org/wiki/Text_corpus){:target="_blank"}.
+
+![Figure 16: Classification Error v2]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-3/classification-error-v2.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
+
+### Classification Error & Accuracy
+
+There are two common measures of quality in classification.
+
+* Error measures fraction of mistakes
+    * Best possible value is **<math>0.0</math>**
+
+![Figure 17: Classification Error Formula]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-3/classification-error-formula.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block width-50"}
+
+Now, it's common to instead of talk about error, to also talk about accuracy of the classifier.
+Accuracy is exactly opposite of that.
+
+* Often, measure **accuracy**
+    * Fraction of correct predictions
+    * Best possible value is **<math>1.0</math>**
+
+In fact, there's a really natural relationship between error and accuracy, **<math>error = 1 - accuracy</math>**, and vise versa.
+
+![Figure 18: Classification Accuracy Formula]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-3/classification-accuracy-formula.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block width-50"}
+
+## What's Good Accuracy?
+
+Discussed **error** and **accuracy** as ways to evaluate a classifier.
+Now, it's very important to understand the **error** and **accuracy** actually getting from classifier.
+Really think deeply about whether those are good **error** or good level of **accuracy**.
+
+### What If You Ignore The Sentence, Just Guess?
+
+One common mistake might make is to say how good is the classification at all?
+When building a classifier, the first baseline comparison it should do is against random guessing.
+
+* For binary classification:
+    * Half the time, you'll get it right! (on average)
+        * The <math>accuracy = 0.5</math>, or <math>50%</math>
+
+* For <math>k</math> classes, the <math>accuracy = 1 / k</math>
+    * It is <math>0.333</math> for 3 classes, <math>0.25</math> for 4 classes, ...
+
+So at the very least, it should beat random guessing really well.
+If not, then the approach is basically pointless.
+
+### Is Classifier With 90% Accuracy Good? Depends...
+
+Now, even beyond beating random guessing, truly think deeply about whether the classifier, even if it looks really good, is it really meaningfully good?
+
+For example, suppose there is a spam predictor that gets <math>90%</math> accuracy.
+Should go brag about it?
+It that awesome?
+Well, it really depends.
+So the case of spam, not so good, because in 2010, data shows that <math>90%</math> of the emails ever sent were spam.
+So if just guess that every email is spam, accuracy would be <math>90%</math>.
+
+This is a problem where this is what's called **majority class prediction**, so it's just predicted classes is most common.
+It can have amazing performance in cases where there's what's called **class imbalance**.
+* One class has much more representation than the others
+* Spam is much more representative than regular good emails
+
+Be very cautious and really look at whether is **class imbalance** when try to figure out whether accuracy is good.
+This approach also beats random guessing if the majority class is known.
+
+![Figure 19: Classifier Accuracy]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-3/classifier-accuracy.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
+
+### So, Always Be Digging, Asking The Hard Question About Reported Accuracy
+
+So should always be digging into problem, and understanding, really thinking about the predictions and whether that accuracy is really meaningfully good for the problem.
+
+* Is there class imbalance?
+* How does it compare to a simple, baseline approach?
+    * Random guessing
+    * Majority class
+    * ...
+* Most importantly: *what accuracy does my application need*?
+    * What is good enough for my user's experience?
+    * What is the impact of the mistake we make?
+
+## False Positive, False Negative, Confusion Matrices
+
+Talked about **error** and **accuracy** that a classifier might make.
+But there are different kind of **error**.
+
+### Mistake Type
+
+This kind of **error** is called **type of mistake**.
+It's important to look at the **type of mistake** a classifier might make.
+One way to do that is through what's called a confusion matrix.
+
+So talk about the relationship between the true label and whatever classifier predicts, the predicted label.
+* If the true label is positive, and predicted a positive value for the sentence, call that a **true positive** because it is right
+* Similarly, if the true label is negative and predicted negative, that's a **true negative**, because got that right
+
+Now, there is two kinds of mistakes
+* If the true label is positive, but predicted negative, call that a **false negative**
+* If the true label is negative, when predicted positive, call that a **false positive**
+
+The **false negative** and **false positive** can have different impacts on what can happen in practice with the classifier.
+
+![Figure 20: Mistake Type]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-3/mistake-type.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
+
+### Cost Different Mistake Type Can Be Different (&High) For Some Applications
+
+Look at two applications, and what the cost has of **false negative** versus **false positive**.
+* If consider spam filtering, a **false negative** is an email that ws spam but went into the folder it thought it was not spam
+* If looking at a **false positive** that's an email that was not spam that go labeled as spam (went to spam folder), never saw it, lost that email forever (high cost)
+
+Now can also look at medical diagnosis
+* A **false negative** is there's a disease but didn't get detected, so the classifier said it was negative
+    * Don't have disease
+    * Disease goes untreated, which can be really bad thing
+* A **false positive** can also be a bad thing
+    * Classify as having the disease when never had the disease
+    * In this case, get treated potentially with a really bad drug or false side effect for disease that never had
+
+In medical complications it really depends on the cost of the treatment and how many side effects it had versus how bad the disease can be.
+
+![Figure 21: Mistake Type Cost]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-3/mistake-type-cost.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
+
+### Confusion Matrix - Binary Classification
+
+Now, this relationship between the true label and the predicted label, **false negative**, **false positive**, is called the **confusion matrix**.
+
+So for example, have a setting with 100 test examples, 60 positive, and 40 negative.
+So there's a little bit of class imbalance but not too much.
+* 60 positive
+    * So of those 60 positives, if got 50 of them correct
+* 40 negative
+    * So of those 45 negatives, if got 35 of them correct
+
+So out of the 100 examples, got 85 correct.
+The **accuracy** is <math>85</math> correct over <math>100</math>, which is <math>0.85</math>, or <math>85%</math>.
+
+Can also discuss the **false negative** and the **false positive**.
+* The positive, got labeled as negative, that's a **false negative** (10)
+* The negative, got labeled as positive, that's a **false positive** (5)
+
+So in this example, got <math>85%</math> accuracy.
+Got higher **false negative** rate, than **false positive** rate.
+Now those words, **false negative**, **false positive**, apply only for minor classification for two classes.
+But the ideal **confusion matrix** works well even when have more classes.
+
+![Figure 22: Confusion Matrix Binary]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-3/confusion-matrix-binary.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
+
+### Confusion Matrix - Multiclass Classification
+
+So say there are 100 test examples and this is for medical diagnosis, so there are 3 classes, **healthy**, **cold**, **flu**.
+
+The 100 test subjects:
+* Had 70 with that were healthy
+    * Got 60 correct for healthy
+    * Got 8 were confused with cold
+    * Got 2 were confused with flu
+* Had 20 that had cold
+    * Got 12 correct for cold
+    * Half got confused with healthy (4)
+    * Half got diagnosis with something stronger, the flu (4)
+* Had 10 that had the flu
+    * Got 8 correct for flu
+    * Made no mistake, nobody that came in for flu was thought healthy (0)
+    * But 2 of those 10 were thought to have just a cold and not the flu
+
+So, the total, the **accuracy**, here was <math>80</math> (<math>60 + 12 + 8</math>), divided by <math>100</math>.
+So that is <math>0.8</math>, or <math>80%</math> **accuracy**.
+
+But can talk about false predictions.
+Can say it's more common to confuse healthy with having a cold than it is with having the flu.
+The flu is a more complex disease so might have those mistake.
+
+So this is an example of a confusion matrix.
+Can really understand the types of mistakes made, and can interpret those.
+Really important thing to do in classification.
+
+![Figure 23: Confusion Matrix Multiclass]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-3/confusion-matrix-multiclass.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
+
+## Learning Curves: How Much Data Needed?
+
+In the regression, talked about the relationship between error and accuracy in the complexity of the model.
+Talk a little bit about the relationship in terms of the amount of data to learn.
+
+### How Much Data Does Model Need To Learn?
+
+Explore the question of how much data is needed to learn.
+This is a really difficult and complex question in machine learning.
+
+* The more the merrier
+    * But data quality is most important factor
+    * (Having bad data, lots of bad data, is much worse than having much less, much fewer data point with really good, clean, high-quality data point)
+
+* Theoretical techniques sometimes can bound how much data is needed
+    * Typically too loose for practical application
+    * (In practice, there's some empirical techniques to really try to understand how much error is made, and what that kind of error looks like)
+    * But provide guidance
+
+* In practice:
+    * More complex models require more data
+    * Empirical analysis can provide guidance
+
+### Learning Curves
+
+Now the important representation for this relationship between data and quality is what's called the learning curve.
+* A learning curve relates the amount of data for training with the error.
+    * Here talking about testing error
+* Very little data for training, the test error is going to be high
+* But a lot od data for training, the test error is going to be low
+
+The curve is going to get better and better with more and more data.
+
+![Figure 24: Learning Curve]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-3/learning-curve.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block width-50"}
+
+### Limit? Yes, For Most Models...
+
+Is there a limit?
+Is this quality just going to get better and better forever by adding more data?
+The test error is going to decrease by adding more data.
+
+However, there is some gap here.
+The question is whether that gap can go to zero?
+The answer is...in general, no.
+This gap is called the bias.
+
+So intuitively, it says even with infinite data, the test error will not go to zero.
+
+![Figure 25: Learning Curve Limit]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-3/learning-curve-limit.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block width-50"}
+
+### More Complex Models Tend To Have Less Bias...
+
+More complex models tend to have less bias.
+Look at the sentiment analysis classifier, if just use single words like awesome, good, great, terrible, awful, it can do ok.
+Maybe it do really well, maybe just does okay.
+
+But even with infinite data, even with all the data in the world, it never going to get his sentence right, **the sushi was not good**.
+This is because it is not looking at pairs of words, but just looking at the words **good** and not individually.
+
+So more complex models, that deals with combinations of words, or simply called the [bigram](https://en.wikipedia.org/wiki/Bigram){:target="_blank"} model, where looking at pairs of secret words like **not good**.
+
+Those models require more parameters, because there's more possibilities.
+They can do better.
+* They may have a parameter for **good**, say **<math>1.5</math>**
+* But **not good**, say **<math>-2.1</math>**
+
+It gets that sentence, **the sushi was not good**, correct.
+So they have less bias.
+
+They can represent sentences that couldn't be represented as words, so they're potentially more accurate.
+But they need more data to learn, because there's more parameters.
+There's not just a parameter for **good**, there's now a parameter for **not good**, and all possible combinations of words.
+
+The more parameters the model has, in general, the more data it need to learn.
+
+![Figure 26: Complex Model]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-3/complex-model.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block width-50"}
+
+### Models With Less Bias Tend To Need More Data To Learn, But Do Better With Sufficient Data
+
+Talked about the fact of an amount of training data on the test error.
+* Building a classifier using single word
+* Question is, how does that relate to a classifier, based on pairs of words
+
+Now for a classifier based on bigrams, when there is less data, it's not going to do as well, because it has more parameters to fit.
+* But when there is more data, it's going to do better
+* It's going to be able to capture settings like, **the sushi was not good**
+
+At some point, there's a crossover where it starts doing better than the classifier with single word.
+
+But notice the background model still has some bias here.
+Although the bias is small, it still has some bias.
+
+![Figure 27: Model With Less Bias]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-3/model-with-less-bias.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block width-50"}
+
+## Class Probabilities
+
+Talked about classification in terms of just predicting
+* Is this a positive sentence or a negative sentence
+* Is email spam or not spam
+
+But in general, want to go a little bit beyond that and ask about, what is the probability that his is email spam?
+
+### How Confident For The Prediction?
+
+* Thus far, we've outputted a prediction of
+    * Positive (**+**)
+    * Negative (**-**)
+
+* But, how sure are you about the prediction?
+    * "The sushi & everything else were awesome!" &larr; **<math>P(y = + | x) = 0.99</math>**
+        * Definite positive (**+**)
+    * "The sushi was good, the service was OK." &larr; **<math>P(y = + | x) = 0.55</math>**
+        * Not sure, it's not as definite
+
+So what a classifier will often do, is not just output positive or negative, but output how confident, how sure it is.
+One way to do that is probabilities.
+* So have to play the probability of being a positive or negative sentence, given the input sentence **<math>x</math>**
+* So the output label, what's the probability output label, given the input sentence
+* So instead of saying that's definite positive (**+**), say the probability that it's a positive (**+**) given **<math>x</math>** in is <math>0.99</math>
+* The probability of being a positive (**+**), given **<math>x</math>**, is only <math>0.55</math>, because uncertain
+
+Predicting probabilities or level of confidence is extremely important, and it allow to do many things.
+For example, when the probability is known, it can make decisions like
+* What is a good decision boundary that trades off false positive and false negative
+* Balance between the two
+
+![Figure 28: How Confident For The Prediction]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-3/how-confident-for-the-prediction.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
+
+## Summary Classification
+
+Seen classification in a wide variety of setting and how can it really use to predict a class like positive or negative sentiment from data.
+
+In regression, talked about this block diagram that really describe how a machine learning algorithm iterates through its data.
+Take this same block diagram and work through it and describe how it works out in the case of classification with sentiment analysis.
+
+Classification for sentiment
+1. The data is the text of the reviews, so for each review, the text of review is associated with a particular labeled sentiment
+2. From that text of the review, feed it through a feature extraction phase which give **<math>x</math>**, the input to the algorithm
+    * This **<math>x</math>** here is going to be the **word counts**
+    * So word counts for every data point, for every review
+3. Now the machine learning model is going to take that input data, so the **word counts**, as well as some several parameters
+    * Which calling here **<math>&wcirc;</math> (<math>w (hat)</math>)**
+    * Which are the **weights for each word**
+4. Combining these two (**word counts** and **weights for each word**), going to output the prediction
+    * If the score is greater than zero, it's going to be positive
+    * If the score is less than zero, it's going to be negative
+    * So this output here is the **predicted sentiment**
+5. If just using the model, it would be done here
+    * But really, in machine learning algorithm phase, it is going to evaluate that result, and then feed it back into the algorithm to improve the parameters
+    * So going to take the **predicted sentiment**, **<math>&ycirc;</math> (<math>y (hat)</math>)**, and compare it with the **true label** for the **sentiment** (sentiment label for each data point)
+    * That's going to fit in and the **quality measure** is going to be **classification accuracy**
+6. The machine learning algorithm is going to take that **accuracy** and try to improve it
+    * The way the improvement works, is by updating the parameter **<math>&wcirc;</math>**
+    * That's what the cycle for machine learning algorithm classification would look like
+
+![Figure 29: Detail Machine Learning Pipeline Sentiment]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-3/detail-machine-learning-pipeline-sentiment.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
+
+### What You Can Do Now...
+
+Looked at how to do classification
+* Looked at various examples of where it can be applied
+* Talked about a few models for building classification, especially in the context of sentiment analysis
+* Built a notebook of a classifier from data and analyzed it
+* With this knowledge, ready to build an intelligent application that uses a classifier at its core
+
+* Identify a classification problem and some common applications
+* Describe decision boundaries and linear classifiers
+* Train a classifier
+* Measure its error
+    * Some rules of thumb of good accuracy
+* Interpret the types of error associated with classification
+* Describe the tradeoffs between model bias and data set size
+* Use class probability to express degree of confidence in prediction
 
 ## Appendix
 
