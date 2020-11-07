@@ -339,3 +339,4 @@ The specialization will use a number of Python tools to help get started with ma
 ## Reference
 * [[PDF] Introduction]({{ "/res/misc/ml/coursera/machine-learning-foundations-a-case-study-approach/week-1/intro.pdf" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:target="_blank"}
 * [[GitHub] Repository Starter Code](https://github.com/learnml/machine-learning-specialization){:target="_blank"}
+* [[GitHub] Data Set](https://github.com/KarthiAru/Machine-Learning-Specialization-Coursera)
