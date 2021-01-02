@@ -1,12 +1,12 @@
         <!-- Navigation -->
         <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-            <div class="container">
+            <div class="container-fluid">
                 <a class="navbar-brand" href="{{ site.url }}{{ site.baseurl }}">GDS</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle Navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle Navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
                         <!--
                         <li class="nav-item active">
                             <a class="nav-link" href="{{ site.url }}{{ site.baseurl }}">Home <span class="sr-only">(current)</span></a>
@@ -16,21 +16,21 @@
                     {% for category in site.data.docs %}
                     {% if category.subcategories %}
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ category.title }}
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 {% for subcategory in category.subcategories %}
                                 {% unless forloop.first %}
-                                    <div class="dropdown-divider"></div>
+                                    <li><hr class="dropdown-divider"></li>
                                 {% endunless %}
                                     <h6 class="dropdown-header">{{ subcategory.title }}</h6>
                                     {% for doc in subcategory.docs %}
                                     {% assign u = doc.link | prepend: '/docs/' | append: '/' %}
-                                    <a class="dropdown-item" href="{{ site.url }}{{ site.baseurl }}{{ u }}">{{ doc.title }}</a>
+                                    <li><a class="dropdown-item" href="{{ site.url }}{{ site.baseurl }}{{ u }}">{{ doc.title }}</a></li>
                                     {% endfor %}
                                 {% endfor %}
-                            </div>
+                            </ul>
                         </li>
                     {% else %}
                         <li class="nav-item">
