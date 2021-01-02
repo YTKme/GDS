@@ -16,10 +16,10 @@
                     {% for category in site.data.docs %}
                     {% if category.subcategories %}
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown{{ category.title | remove: ' ' }}" data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ category.title }}
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown{{ category.title | remove: ' ' }}">
                                 {% for subcategory in category.subcategories %}
                                 {% unless forloop.first %}
                                     <li><hr class="dropdown-divider"></li>
