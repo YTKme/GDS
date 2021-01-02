@@ -102,7 +102,7 @@ But more and more, people are realizing other areas in which recommender systems
 * It's been well studied as a treatment for headaches
 * But what if it's discovered to have some other possible use (blood thinning? heart patients?)
 * If can find these types of relationships, if can repurpose this drug for some other treatment, then that could be really useful
-* It's really quite costly and lengthy process to get <abbr data-toggle="tooltip" title="Food and Drug Administration">FDA</abbr> approval for a completely new drug
+* It's really quite costly and lengthy process to get <abbr data-bs-toggle="tooltip" title="Food and Drug Administration">FDA</abbr> approval for a completely new drug
 * But if can take a drug where the types of side effects and the possible risk associated are already well known and well studied
 * Then it's a lot easier to get approval for treatment with some other condition
 
@@ -208,7 +208,7 @@ So it seems very intuitive that when thinking about doing product recommendation
 
 ![Figure 4: Co-Occurrence Matrix]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-5/co-occurrence-matrix.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
 
-So this bring it to the idea of <abbr data-toggle="tooltip" title="the fact of two or more things occurring together or simultaneously">co-occurrence</abbr> of purchase.
+So this bring it to the idea of <abbr data-bs-toggle="tooltip" title="the fact of two or more things occurring together or simultaneously">co-occurrence</abbr> of purchase.
 So for example, if someone was just on Amazon buying diapers, well there is probably lots of examples of people who bought diapers also bought baby wipes.
 So how to use this type of co-occurrence of purchases to make recommendations?
 
@@ -315,7 +315,7 @@ One way in which can normalize this matrix is with something call **Jaccard Simi
 
 Want to mention that this notion of normalizing this co-occurrence matrix, is very similar to the clustering and similarity module, when talking about <abbr data-toggle="tooltip" title="term frequency-inverse document frequency">tf-idf</abbr>.
 * Where there looking at documents and said that really, really common words just swamped out other words that might have cared about.
-* So it had this way of using <abbr data-toggle="tooltip" title="term frequency-inverse document frequency">tf-idf</abbr> to renormalize the raw word counts that is used to represent the document.
+* So it had this way of using <abbr data-bs-toggle="tooltip" title="term frequency-inverse document frequency">tf-idf</abbr> to renormalize the raw word counts that is used to represent the document.
 
 Well in this case, this is a very similar notion of accounting for very popular item.
 The way it works is pretty intuitive.
@@ -880,7 +880,7 @@ But need to talk about what the curve might look like for another more realistic
 ### Which Algorithm The Best?
 
 * For a given **precision**, want **recall** as large as possible (or vice versa)
-* One metric: largest **area under the curve (<abbr title="Area Under the Curve">AUC</abbr>)**
+* One metric: largest **area under the curve (<abbr data-bs-toggle="tooltip" title="Area Under the Curve">AUC</abbr>)**
 * Another: set desired recall and maximize precision (**precision at k**)
 
 ![Figure 18: Best Algorithm]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-5/best-algorithm.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block width-50"}
@@ -900,7 +900,7 @@ So in this case, how to think about comparing these different algorithms, and ch
 * Can think about the area under the curve
 * Can compare the area of one curve to the area under a different curve, and see which area is larger
 * That is one proxy for which recommender system is doing a better job
-* A metric can be used is something called area under the curve (<abbr title="Area Under the Curve">AUC</abbr>)
+* A metric can be used is something called area under the curve (<abbr data-bs-toggle="tooltip" title="Area Under the Curve">AUC</abbr>)
 
 But might not care about how the recommender system is doing across all possible performance situations.
 Instead, might be in a situation where:
@@ -962,7 +962,7 @@ Once again, revisit this machine learning workflow, but in the context of recomm
 * Exploit estimated "topic" vectors (algorithms to come...) to make recommendations
 * Describe the cold-start problem and ways to handle it (e.g., incorporating features)
 * Analyze performance of various recommender systems in terms of precision and recall
-* Use <abbr title="Area Under the Curve">AUC</abbr> or prevision-at-k to select amongst candidate algorithms
+* Use <abbr data-bs-toggle="tooltip" title="Area Under the Curve">AUC</abbr> or prevision-at-k to select amongst candidate algorithms
 
 So learned how to do collaborative filtering in practice, so now can go out actually implement a recommender system.
 Can do a gift recommender for your family, which will make holiday shopping really easy, or can build a new song recommender.

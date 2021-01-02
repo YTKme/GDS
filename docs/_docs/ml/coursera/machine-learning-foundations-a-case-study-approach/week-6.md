@@ -54,7 +54,7 @@ Talked about an application of finding cool shoes or dresses just based on image
 The technique used is called deep learning, and in particular, it's based on something called neural networks.
 
 But before that, need to talk about data representation.
-Discussed things like <abbr data-toggle="tooltip" title="term frequency-inverse document frequency">tf-idf</abbr>, and bag of word models.
+Discussed things like <abbr data-bs-toggle="tooltip" title="term frequency-inverse document frequency">tf-idf</abbr>, and bag of word models.
 But how to really represent data when it comes to images?
 These are called **features**, and is a key part of machine learning.
 
