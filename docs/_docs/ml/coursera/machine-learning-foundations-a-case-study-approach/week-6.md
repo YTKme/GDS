@@ -58,6 +58,35 @@ Discussed things like <abbr data-bs-toggle="tooltip" title="term frequency-inver
 But how to really represent data when it comes to images?
 These are called **features**, and is a key part of machine learning.
 
+### Goal: Revisit Classifiers, But Using More Complex, Non-Linear Features
+
+![Figure 1: Revisit Classifier]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-6/revisit-classifier.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
+
+So typically when talking about machine learning, it is given some **input**.
+For classification, talked about sentimental analysis.
+* Given a sentence
+* It goes through a classifier model
+* Decided if that sentence has positive or negative sentiment
+
+### Image Classification
+
+In image classification, the goal is to go from an image, this is the **input**, the pixel of the images, to a classification.
+
+## Neural Networks &rarr; Learning \*Very\* Non-Linear Features
+
+So as discussed, features are the representation of the data that's used to feed into the classifier.
+There are many representations...
+* Text
+    * Bag of words
+    * <abbr data-bs-toggle="tooltip" title="term frequency-inverse document frequency">tf-idf</abbr>
+* Image
+    * There's a lot of other representations
+    * Discuss a few more of those
+
+Focus on neural networks, which provide the non-linear representation for the data.
+
+## Linear Classifier
+
 ## Reference
 * [[PDF] Deep Learning]({{ "/res/misc/ml/coursera/machine-learning-foundations-a-case-study-approach/week-6/deeplearning-annotated.pdf" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:target="_blank"}
 * [Object Recognition From Local Scale-Invariant Features](https://www.cs.ubc.ca/~lowe/papers/iccv99.pdf){:target="_blank"}
