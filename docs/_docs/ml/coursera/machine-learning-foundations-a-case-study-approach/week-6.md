@@ -85,7 +85,80 @@ There are many representations...
 
 Focus on neural networks, which provide the non-linear representation for the data.
 
-## Linear Classifier
+### Linear Classifier
+
+Going back to classification for a little review.
+
+Discussed linear classifier
+* Which create this line or linear decision boundary between say the positive class and the negative class
+* The boundary is stated by the **Score**, **<math>w<sub>0</sub> + w<sub>1</sub>x<sub>1</sub> (first feature)</math>**, **<math>w<sub>2</sub>x<sub>2</sub> (second feature)</math>** so on...
+    * On the positive side, the **Score** is greater than zero
+    * On the negative side, the **Score** is less than zero
+* Having a nice **Score** function, can separate the positives from the negatives
+
+![Figure 2: Linear Classifier]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-6/linear-classifier.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block width-75"}
+
+### Graph Representation of Classifier: Useful For Defining Neural Networks
+
+In neural network, classifiers are represented using graphs.
+* Have a node for each feature **<math>x<sub>1</sub></math>**, **<math>x<sub>2</sub></math>**, all the way to the **<math>d<sup>th</sup></math>** feature **<math>x<sub>d</sub></math>**
+* A node for output **<math>y</math>**, what is trying to predict
+* The first feature **<math>x<sub>1</sub></math>** is multiplied by the weight **<math>w<sub>1</sub></math>**, putting that weight on the edge
+* The second feature **<math>x<sub>2</sub></math>** is multiplied by the second weight **<math>w<sub>2</sub></math>**, going to put it on that edge
+* All the way to **<math>x<sub>d</sub></math>**, which is multiplied by weight **<math>w<sub>d</sub></math>**, to put in the last edge
+* The last weight, **<math>w<sub>0</sub></math>** doesn't get multiplied by any feature, but it gets multiplied by **<math>1</math>**
+
+Imagine multiplying the weights **<math>w<sub>0</sub></math>** through **<math>w<sub>d</sub></math>** with the features **<math>x<sub>1</sub></math>** through **<math>x<sub>d</sub></math>** and the coefficient **<math>1</math>**, to get the **Score**.
+* When the **Score** is greater than **<math>0</math>**, it is declared the output to be **<math>1</math>**
+* When the **Score** is less than **<math>0</math>**, it is declared the output to be **<math>0</math>**
+
+This is an example of a small, one layer, neural network.
+
+**Note:** If the perceptron takes an input of exactly **<math>0</math>**, what should it output?
+An input of **<math>0</math>** (zero) is an edge case: there is not hard and fast rule as to whether the perceptron should output **<math>0</math>** or **<math>1</math>**.
+Each implementation should pick one way and output the same value for all inputs of **<math>0</math>** (zero).
+
+![Figure 3: Graph Representation of Classifier]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-6/graph-representation-classifier.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block width-75"}
+
+### What Can a Linear Classifier Represent?
+
+It was described the small linear classifiers is a neural network, a one layer neural network.
+What can this one layer neural network represent?
+
+Take the function **<math>x<sub>1</sub> OR x<sub>2</sub></math>**
+* Can it be represented using a small neural network
+* Define the function a little bit more formally
+* Have variable **<math>x<sub>1</sub></math>**, **<math>x<sub>2</sub></math>**, and the output **<math>y</math>**
+* There are some possibilities...
+    * When **<math>x<sub>1</sub></math>** is **<math>0</math>**, and **<math>x<sub>2</sub></math>** is **<math>0</math>**, the output **<math>y</math>** would be **<math>0</math>**
+    * When **<math>x<sub>1</sub></math>** is **<math>1</math>**, and **<math>x<sub>2</sub></math>** is **<math>0</math>**, the output **<math>y</math>** would be **<math>1</math>**
+    * When **<math>x<sub>1</sub></math>** is **<math>0</math>**, and **<math>x<sub>2</sub></math>** is **<math>1</math>**, the output **<math>y</math>** would be **<math>1</math>**
+    * Similarly, when they are both **<math>1</math>**, the output is **<math>1</math>**
+
+{:.table}
+| **<math>x<sub>1</sub></math>** | **<math>x<sub>2</sub></math>** | **y** | **Score** |
+|--------------------------------|--------------------------------|-------|-----------|
+| 0                              | 0                              | 0     | -0.5      |
+| 1                              | 0                              | 1     | 0.5       |
+| 0                              | 1                              | 1     | 0.5       |
+| 1                              | 1                              | 1     | 1.5       |
+
+* Define a **Score** function such that the value is greater than **<math>0</math>** for the last three (3) rows, but it is less than **<math>0</math>** for the first row
+* How to do that (there are many ways of doing it actually)
+    * Put a weight of **<math>1</math>**, one each of the edges **<math>x<sub>1</sub></math>** and **<math>x<sub>2</sub></math>**
+    * Think about the **Score**
+    * The **Score** of the first row is **<math>0</math>**, and the **Score** of the other rows are greater than **<math>0</math>**
+* Might want to add a little bit of separation, might put a negative value on the first edge (**<math>-0.5</math>**)
+    * When **<math>x<sub>1</sub></math>** is **<math>0</math>**, and **<math>x<sub>2</sub></math>** is **<math>0</math>**, then the **Score** becomes **<math>-0.5</math>**
+    * When **<math>x<sub>1</sub></math>** is **<math>1</math>**, and **<math>x<sub>2</sub></math>** is **<math>0</math>**, then the **Score** becomes **<math>0.5</math>**
+    * When **<math>x<sub>1</sub></math>** is **<math>0</math>**, and **<math>x<sub>2</sub></math>** is **<math>1</math>**, then the **Score** becomes **<math>0.5</math>**
+    * When they are both **<math>1</math>**, the **Score** is **<math>1.5</math>**
+
+With this simple weights on the edges, it represents the function of **<math>x<sub>1</sub> OR x<sub>2</sub></math>**
+
+Now can represent the function **<math>x<sub>1</sub> AND x<sub>2</sub></math>**
+
+![Figure 4: What Can a Linear Classifier Represent]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-6/linear-classifier-represent.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
 
 ## Reference
 * [[PDF] Deep Learning]({{ "/res/misc/ml/coursera/machine-learning-foundations-a-case-study-approach/week-6/deeplearning-annotated.pdf" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:target="_blank"}
