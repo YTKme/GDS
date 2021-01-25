@@ -157,16 +157,211 @@ Take the function **<math>x<sub>1</sub> OR x<sub>2</sub></math>**
 With this simple weights on the edges, it represents the function of **<math>x<sub>1</sub> OR x<sub>2</sub></math>**
 
 Now can represent the function **<math>x<sub>1</sub> AND x<sub>2</sub></math>**
+* Similarly can put weights **<math>1</math>** and **<math>1</math>** on the edges **<math>x<sub>1</sub></math>** and **<math>x<sub>2</sub></math>**
+* But in this case, only want to turn it on when both **<math>x<sub>1</sub></math>** and **<math>x<sub>2</sub></math>** have value **<math>1</math>**
+* So instead of putting **<math>-0.5</math>** on the top edge, put **<math>-1.5</math>**
+* If fill out the table just like with the first example, notice that it is represent the function **<math>x<sub>1</sub></math>** and **<math>x<sub>2</sub></math>** using a simple neural network
 
-![Figure 4: What Can a Linear Classifier Represent]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-6/linear-classifier-represent.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
+![Figure 4: What Can a Linear Classifier Represent]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-6/linear-classifier-represent.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block width-75"}
+
+### What Can't a Simple Linear Classifier Represent?
+
+A one layer neural network is basically the same as the standard linear classifiers.
+So what can linear classifier not represent?
+It can represent **<math>x<sub>1</sub> OR x<sub>2</sub></math>**.
+It can represent **<math>x<sub>1</sub> AND x<sub>2</sub></math>**.
+But what's a function, a very simple function it cannot represent?
+
+Well, here is an example...
+* There is no line that separate the **pluses** and **minuses**
+* This function is called the **XOR**
+* It is a counter example to (almost) everything
+* Whenever a counter example is needed, first thing to try is **XOR**
+* For this case, the linear features described are not enough and need some kind of non-linear features
+* This is when the neural networks come to play for real
+
+![Figure 5: What Can't a Linear Classifier Represent]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-6/simple-linear-classifier.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block width-75"}
+
+### Solving The XOR Problem: Adding a Layer
+
+So **XOR** has value **<math>1</math>** either...
+* Value of **<math>x<sub>1</sub></math>** is true AND **<math>x<sub>2</sub></math>** is false, so NOT **<math>x<sub>2</sub></math>**
+* Value of **<math>x<sub>1</sub></math>** is false AND **<math>x<sub>2</sub></math>** is true, so NOT **<math>x<sub>1</sub></math>**
+
+How can this be represented with a neural network?
+* Call the first term **<math>z<sub>1</sub></math>**
+* Call the second term **<math>z<sub>2</sub></math>**
+
+Going to build a neural network to represent not directly the inputs of **<math>x<sub>1</sub></math>** and **<math>x<sub>2</sub></math>** to predict **<math>y</math>**.
+But they predict intermediate values **<math>z<sub>1</sub></math>** and **<math>z<sub>2</sub></math>**, and then those are going to predict **<math>y</math>**.
+
+Take **<math>z<sub>1</sub></math>**
+* How to represent only a neural network that can predict **<math>z<sub>1</sub></math>**
+* Since it have to negate, it is NOT **<math>x<sub>2</sub></math>**
+    * Put a **<math>-1</math>** on that edge **<math>x<sub>2</sub></math>**
+    * Put a **<math>+1</math>** on **<math>x<sub>1</sub></math>**
+    * Put a **<math>-0.5</math>** on **<math>1</math>** edge
+* Now have the representation for **<math>z<sub>1</sub></math>**
+
+Similarly for **<math>z<sub>2</sub></math>**
+* Put a **<math>-1</math>** on edge **<math>x<sub>1</sub></math>**
+* Put a **<math>+1</math>** on edge **<math>x<sub>2</sub></math>**
+* Put a **<math>-0.5</math>** on **<math>1</math>**, the constant edge
+* Now it represents  **<math>z<sub>2</sub></math>**
+
+The last step...
+* If **<math>z<sub>1</sub></math>** and **<math>z<sub>2</sub></math>** exist, just have to **OR** them
+* Already know how to **OR** the boolean variables
+* It is just **<math>1</math>** and **<math>1</math>** on the **<math>z<sub>1</sub></math>** and **<math>z<sub>2</sub></math>** edge, and **<math>-0.5</math>** on the constant edge
+
+Now it has built out the first deep neural network, not super deep, but it has two (2) layers.
+
+![Figure 6: Solving The XOR Problem]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-6/solving-the-xor-problem.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block width-75"}
+
+### A Neural Network
+
+* Layers and layers and layers of linear models and non-linear transformation
+* Around for about 50 years
+    * Fell in "disfavor" in 90s
+* In last few years, big resurgence
+    * Impressive accuracy on several benchmark problems
+    * Powered by huge datasets, GPUs, and modeling / learning algorithm improvements
+
+In general...
+* Neural networks is about this layers and layers of transformations of the data
+    * Use these transformations to create these non-linear features (more example in computer vision)
+* Neural network has been around for about 50 years (about as long as machine learning's been around)
+    * However, they fell in disfavor around the 90's
+    * Because folks are having a hard time getting good accuracy in neural networks
+* But everything changed about 10 years ago (because of two things that came about)
+    * First, it was a lot more data
+        * Because neural networks have so many, many more layers
+        * So many layers that it need a lot of data to be able to train all those layers
+        * They have a lot of parameters
+        * Recently have came about lots and lots and lots of data from a variety of sources, especially the web
+    * Second, it was computing resources
+        * Because have to deal with bigger neural networks, and more data
+        * Need faster computers and GPUs which were originally design for accelerating graphics for computer games
+        * Turns out to be exactly the right tool to build and use neural network with lots of data
+        * So because of GPUs and because of these deep neural networks, everything changed
+
+![Figure 7: A Neural Network]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-6/neural-network.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block width-50"}
+
+## Application of Deep Learning To Computer Vision
+
+The first place where neural networks made a tremendous difference, is in an area called computer vision. (Analyzing images and videos)
+In order to understand how deep learning, or these big neural networks, can be applied to computer vision, is good to understand what **image features** are.
+
+### Image Features
+
+* Features = local detectors
+    * Combined to make prediction
+    * (in reality, features are more low-level)
+
+In computer vision, **image features** are kind of like local detectors that get combined to make a prediction.
+Take a particular image, want to predict whether this is a face image or not a face image.
+
+Run the neural detector, if all these fire, using a little neural network, then can say this is a face.
+* Nose detector
+* Eye detector
+* Another eye detector
+* Mouth detector
+
+This is a simple example of how it can build a classifier for images, but in reality they don't explicitly have a nose detector or eye detector.
+
+![Figure 8: Image Feature]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-6/image-feature.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block width-50"}
+
+### Typical Local Detectors Look For Locally "Interest Points" in Image
+
+* **Image features:** collections of locally interesting points
+    * Combined to build classifiers
+
+What happens is these called **image features**, or interest points (there are various names for it), they really tried to final local image segments, patches, that are really distinctive.
+So maybe they'll find the corner around the eye, maybe the corner around the nose.
+So if there are lots of these corner detectors (a face is comprised of corners), corner detector firings at places around the eyes, the mouth, and nose.
+If enough of these fire in a particular pattern, a face is discovered.
+This is how computer vision typically works, how classification works.
+Of course, there're more general models and more complex ones, but this is the basic idea.
+
+### Many Hand Created Features Exist For Finding Interest Points...
+
+* Spin Images [Johnson and Herbert '99]
+* Textons [Malik et al. '99]
+* RIFT [Lazebnik '04]
+* GLOH [Mikolajczyk and Schmid '05]
+* HoG [Dalal and Triggs '05]
+* <abbr data-bs-toggle="tooltip" title="Scale-Invariant Feature Transform">SIFT</abbr> [Lowe '99]
+
+For years, these types of detectors of local features are built by hand.
+A very popular one was called SIFT features, and this retransformed their computer vision because they were really quite applicable and quite cool.
+There are many other that can improve accuracy.
+Other kinds of features that can be used.
+
+### Standard Image Classification Approach
+
+Talked about this hand created **image features** like <abbr data-bs-toggle="tooltip" title="Scale-Invariant Feature Transform">SIFT</abbr> feature.
+Now talk about how they can be typically used for classification.
+* Run the sifted textures over the image and they fire in various places
+* (For example the corners of the eyes and the mouth)
+* Create a vector that describe the image based on the firings, the locations where those SIFT features fired
+    * Might have some firings in some locations, no firings in other locations
+    * Can be viewed similarly to the words in a document
+    * Does the word **messy** appear
+    * Does the word **football** appear
+    * Similarly, does a corner appear in a particular place in the image
+* Once have the description of the image, can feed it to a classifier (for example, a simple linear classifier)
+    * Logistic regression
+    * Support Vector Machine
+    * ...and more
+* From there, get a detection as to whether this image is a face or not
+
+Now that sounds pretty exciting and it had a real significant impact in their computer vision.
+
+![Figure 9: Standard Image Classification Approach]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-6/standard-image-classification-approach.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
+
+### Many Hand Created Feature Exist For Finding Interest Points...
+
+...but very painful to design
+
+The challenge though, is that creating these hand built **image features** was a really complicated process and require several PhD thesis to be done well.
+
+### Deep Learning: Implicitly Learns Features
+
+Neural networks are going to discover and learn those features automatically.
+
+Example, supposed given an input image, and they run it through a three layer neural network before making a prediction
+* Typically what happens, is that it learn local feature detectors (they're like <abbr data-bs-toggle="tooltip" title="Scale-Invariant Feature Transform">SIFT</abbr>)
+* But at different levels and different layers
+* These detectors that is learned, they detect different things, different properties of the the image at different levels
+* The first layer
+    * Might learn detectors that look kind of like little patches
+    * Which really react to things like diagonal edges
+    * All about capturing diagonal edges
+        * The first one is about capturing diagonal edges
+        * The center one is about capturing diagonal edges in the other direction
+        * The last one is about capturing transitions and color from dark to green
+* The next (second) layer
+    * Combining the diagonal edge detection into some kind of more complex detector
+    * For example, discovered this wiggly line and pattern detectors in the layer
+    * Also discovered this kind of detectors that react to and detect corners in the image
+* The final (third) layer
+    * Come up with detectors that are even more complicated
+    * For a variety of images, might end up with things that react to torsos and faces
+    * Maybe with a bigger data set, it can even fire up with images of corals
+
+So neural networks capture different types of **image features** at different layers, and then they get learned automatically.
+
+![Figure 10: Deep Learning Implicitly Learns Features]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-6/deep-learning-implicitly-learn-feature.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
 
 ## Reference
 * [[PDF] Deep Learning]({{ "/res/misc/ml/coursera/machine-learning-foundations-a-case-study-approach/week-6/deeplearning-annotated.pdf" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:target="_blank"}
 * [Object Recognition From Local Scale-Invariant Features](https://www.cs.ubc.ca/~lowe/papers/iccv99.pdf){:target="_blank"}
 * [Spin-Images: A Representation For 3-D Surface Matching](https://www.ri.cmu.edu/pub_files/pub2/johnson_andrew_1997_3/johnson_andrew_1997_3.pdf){:target="_blank"}
-* [Representing and Recognizing the Visual Appearance of Materialsusing Three-dimensional Textons](https://people.eecs.berkeley.edu/~malik/papers/LM-3dtexton.pdf){:target="_blank"}
+* [Representing and Recognizing the Visual Appearance of Material Three-dimensional Textons](https://people.eecs.berkeley.edu/~malik/papers/LM-3dtexton.pdf){:target="_blank"}
 * [A Sparse Texture Representation Using Local Affine Regions](https://hal.inria.fr/inria-00548530/document){:target="_blank"}
 * [A Performance Evaluation of Local Descriptors](http://lear.inrialpes.fr/pubs/2005/MS05/mikolajczyk_pami05.pdf){:target="_blank"}
 * [Histograms of Oriented Gradients for Human Detection](http://lear.inrialpes.fr/people/triggs/pubs/Dalal-cvpr05.pdf){:target="_blank"}
 * [SURF: Speeded Up Robust Features](https://people.ee.ethz.ch/~surf/eccv06.pdf){:target="_blank"}
 * [ImageNet Classification with Deep Convolutional Neural Networks](http://www.cs.toronto.edu/~fritz/absps/imagenet.pdf){:target="_blank"}
+* [Computer Vision](https://en.wikipedia.org/wiki/Computer_vision){:target="_blank}
+* [Scale-Invariant Feature Transform](https://en.wikipedia.org/wiki/Scale-invariant_feature_transform){:target="_blank}
