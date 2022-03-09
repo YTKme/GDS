@@ -353,6 +353,203 @@ So neural networks capture different types of **image features** at different la
 
 ![Figure 10: Deep Learning Implicitly Learns Features]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-6/deep-learning-implicitly-learn-feature.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
 
+# Deep Learning Performance
+
+Deep learning is exciting because it learns these complex features of images.
+They also had tremendous impact over the recent years in a variety of computer vision applications.
+
+### Sample Results Using Deep Neural Network
+
+* German traffic sign recognition benchmark
+    * 99.5% accuracy (IDSIA team)
+* House number recognition
+    * 97.8% accuracy per character (Goodfellow et al. '13)
+
+One is an example of identifying traffic signs based on neural networks.
+* So these are a dataset of German traffic signs
+* The idea is for every image, identify what sign it is
+* They were able to get 99.5% accuracy using a deep neural network
+
+Another is an example that came out of some work from Google on identifying the house number based on what's called street view data.
+* This is the data that Google uses driving around cars and photographing all sorts of streets around the world
+* The images are pretty complex
+* Still, they're able to get 97.8% accuracy on the per character level
+
+These were exciting results.
+But the one that changed everything, the really excited field happened in 2012.
+
+### ImageNet 2012 Competition: 1.2M Training Images, 1000 Categories
+
+For many years, there was an image competition called ImageNet.
+* In 2012, the ImageNet competition included 1.2 million training images from about 1,000 categories
+* The idea was to classify an image (not just a dog, but is it a golden retriever or labrador?)
+* Very, very fine level detail
+
+There were many teams competing. There were top 3 teams.
+* A team called OXFORD_VGG
+    * Which got pretty decent accuracy
+    * Looking at their top 5 guesses, they were getting about 25% error
+    * Using traditional techniques like <abbr data-bs-toggle="tooltip" title="Scale-Invariant Feature Transform">SIFT</abbr>
+* A team called ISI
+    * Did a little bit better
+    * Using traditional techniques like <abbr data-bs-toggle="tooltip" title="Scale-Invariant Feature Transform">SIFT</abbr>, a little bit more elaborate, kind of like that
+* A team called SuperVision
+    * Used a deep neural network and had huge gain over the competitors
+    * That performance really sparked a lot of excitement of using deep neural networks in computer vision
+    * They didn't have to just use hand coded features, they can be learned automatically
+
+![Figure 11: ImageNet 2012 Competition]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-6/imagenet-2012.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
+
+Winning entry: SuperVision
+* 8 layers, 60M parameters (Krizhevsky et al. '12)
+
+Achieving these amazing result required:
+* New learning algorithms
+* GPU implementation
+
+Now that neural network that won the competition with the SuperVision team was called the AlexNet neural network.
+That neural network
+* Involved 8 layers, 60 million parameters
+* Was only possible because
+    * New training algorithms that could deal with lots of images and lots of parameters
+    * The <abbr data-bs-toggle="tooltip" title="Graphics Processing Unit">GPU</abbr> implementation that would really scale to large data sets
+
+### Deep Learning on ImageNet
+
+Deep learning had a tremendous part in the ImageNet competition.
+Which allowed them to take 1.2 million images to the deep neural network and get amazing performance to predict on of a thousand different categories.
+
+## Deep Learning in Computer Vision
+
+There are some examples of neural networks in computer vision and doing classification.
+Such as "Is there a labrador retriever in this image?".
+But they can do quite a bit more.
+
+### Scene Parsing With Deep Learning
+
+For example, it can do image parsing.
+For every picture in an image, try to classify it and discover regions.
+This kind of image description, or is called scene understanding.
+It is pretty cool, and neural network provided significant gains.
+
+### Retrieving Similar Images
+
+Going back a bit, to the discussion of a new way to shop for shoes or dresses.
+The thing tried there is to retrieve similar images.
+* For example, given input of boring black shoe, what neural network will output is similar black shoes.
+* If a little bit more stylish boot is input, it gives a variety of interesting boots.
+* Similarly for heels, for brown shoes, for sneakers, and so on.
+
+## Challenges of Deep Learning
+
+Neural networks provide some exciting results.
+However, they do come with some challenges.
+
+### Deep Learning Score Card
+
+Pros
+* Enables learning of features rather than hand tuning
+* Impressive performance gains
+    * Computer vision
+    * Speech recognition
+    * Some text analysis
+* Potential for more impact
+
+Cons
+* Requires a lot of data for high accuracy
+* Computationally really expensive
+* Extremely hard to tune
+    * Choice of architecture
+    * Parameter types
+    * Hyperparameters
+    * Learning algorithm
+    * ...
+
+On the pro side.
+* They enable it to represent this non-linear complex features
+* They have impressive results, not just in computer vision, but in some other areas like speech recognition
+* So systems like Siri on the phone and others use neural networks behind the scene
+* As well as some text analysis tasks
+* Potential for much more impact in the wide range of areas
+
+Although there's some great pros, neural network also comes with some cons too.
+* They require lots of data to get great performance
+* They are computationally expensive, even with GPUs they can be computationally expensive
+* They are extremely hard to tune
+* There are a lot of choices   
+    * Layers to use
+    * Parameters to use
+    * Can be really hard
+
+**Computational Cost + So Many Choices = Incredibly Hard To Tune**
+
+They do come with some challenges.
+
+### Deep Learning Workflow
+
+To understand the challenges, need to talk about the workflow of training a neural network.
+* Start with lots and lots and lots of data
+    * That data has to be labeled
+    * That requires a lot of human annotation and that can be hard
+* Feed it, split them into training tasks or validation sets
+    * Learned with deep neural network, and that can take quite a while
+* But once validate
+    * Realized that complex eight layer structure of 60 million parameters wasn't exact what is needed
+    * Need to revise it, or adjust parameters, or change how it is learned
+* Have to iterate again and again
+
+![Figure 12: Deep Learning Workflow]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-6/deep-learning-workflow.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block width-75"}
+
+### Many Tricks Needed To Work Well...
+
+* Different types of layers, connections, ...
+* Needed for high accuracy
+
+To get the winning neural network
+* Really needed to connect various layers with different representations
+* Lots of complexity in the learning algorithm
+* It was hard
+
+So if combining the computational choices and costs with so many things too soon, it will end up with an incredibly hard process to figure out what neural network to use.
+
+## Deep Features: Deep Learning + Transfer Learning
+
+Learned that deep neural networks are really cool, high accuracy tool.
+But they can be really hard to build and learn, and requires lots and lots of data.
+Next going to talk about something really exciting.
+Which is called deep features, which allow it to build neural networks, even when it doesn't have a lot of data.
+
+### Standard Image Classification Approach
+
+Going back to the image data classification pipeline
+* Start with an image
+* Detected some features, or other representations
+* Fed that to a simple classifier, like a linear classifier
+
+The question here is can it use the features that is learned through the neural network?
+Those cool ones at the corners, edges, and even faces to feed that classifier.
+Can do something a different different?
+
+![Figure 13: Standard Image Classification Approach V2]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-6/standard-image-classification-approach-v2.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
+
+### Transfer Learning: Use Data From One Task to Help Learn on Another
+
+Old idea, explored for deep learning by Donahue et al. '14 & others
+
+The idea here, having deep features, is something called transfer learning.
+Transfer learning is a pretty old idea that's been around for quite a while, but has a lot of impact in recent years in area of deep neural networks.
+* So the idea is to train the neural network in a case where there it have lots and lots of data (for example, in a task of differentiating cats versus dogs)
+* Learned that eight layer, 16 million parameter complex neural network
+* Able to get great accuracy in the task of cats versus dogs
+
+Now what if there is a little bit of data, not tons of data for new tasks?
+Trying to detect chairs, elephants, cars, camera, in hundreds of categories.
+Can somehow use the features learned in cats versus dogs to combine for simple classifier and feed that and get great accuracy on this 101 new categories?
+
+
+
+![Figure 14: Transfer Learning]({{ "/res/img/ml/coursera/machine-learning-foundations-a-case-study-approach/week-6/transfer-learning.svg" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:class="img-fluid rounded mx-auto d-block"}
+
 ## Reference
 * [[PDF] Deep Learning]({{ "/res/misc/ml/coursera/machine-learning-foundations-a-case-study-approach/week-6/deeplearning-annotated.pdf" | prepend : "/" | prepend : site.baseurl | prepend : site.url }}){:target="_blank"}
 * [Object Recognition From Local Scale-Invariant Features](https://www.cs.ubc.ca/~lowe/papers/iccv99.pdf){:target="_blank"}
