@@ -1,8 +1,34 @@
-/*
- * General
- */
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# General
+	# Custom properties
+	# Reset
+    # Typography
+# Accessibility
+# Layout
+# Forms
+# Header
+	# Main navigation menu
+# Content navigation
+# Season schedule
+--------------------------------------------------------------*/
+
+/* General */
 
 body {
     min-height: 75rem;
-    padding-top: 4.5rem;
+    // padding-top: 4.5rem;
+}
+
+.width-25 {
+    width: 25%;
+}
+
+.width-50 {
+    width: 50%;
+}
+
+.width-75 {
+    width: 75%;
 }

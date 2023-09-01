@@ -1,0 +1,19 @@
+---
+layout: default
+---
+
+        <!-- Main -->
+        <div class="container main-content">
+            <div class="row">
+                <div class="col-12 col-md-9" role="main">
+                    <h1>{{ page.title }}</h1>
+                    {{ content }}
+                </div>
+                <div class="col-12 col-md-3" role="complementary">
+                    {% assign my_min = page.toc_min | default: site.toc_min | default: 1 %}
+                    {% assign my_max = page.toc_max | default: site.toc_max | default: 3 %}
+
+                    {% include toc_pure_liquid.html html=content sanitize=true h_min=my_min h_max=my_max %}
+                </div>
+            </div>
+        </div>

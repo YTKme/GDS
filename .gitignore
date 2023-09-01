@@ -176,8 +176,15 @@ _site/
 .jekyll-cache/
 .jekyll-metadata
 
+############
+# Coursera #
+############
+
+ml/coursera/machine-learning-foundations-a-case-study-approach/week-2/work/home_data.gl
+
 #################
 # Miscellaneous #
 #################
 
 .DS_Store
+.vscode

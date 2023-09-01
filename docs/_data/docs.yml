@@ -3,4 +3,25 @@
     - title: Data Science
       docs:
         - title: Overview
-          link: general/datascience/overview
+          link: general/data-science/overview
+
+- title: Coursera
+  subcategories:
+    - title: Machine Learning Foundations A Case Study Approach
+      docs:
+        - title: Week 1
+          link: ml/coursera/machine-learning-foundations-a-case-study-approach/week-1
+        - title: Week 2
+          link: ml/coursera/machine-learning-foundations-a-case-study-approach/week-2
+        - title: Week 3
+          link: ml/coursera/machine-learning-foundations-a-case-study-approach/week-3
+        - title: Week 4
+          link: ml/coursera/machine-learning-foundations-a-case-study-approach/week-4
+        - title: Week 5
+          link: ml/coursera/machine-learning-foundations-a-case-study-approach/week-5
+        - title: Week 6
+          link: ml/coursera/machine-learning-foundations-a-case-study-approach/week-6
+    - title: Machine Learning Regression
+      docs:
+        - title: Week 1
+          link: ml/coursera/machine-learning-regression/week-1
